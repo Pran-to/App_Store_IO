@@ -9,7 +9,7 @@ const ErrorPage = () => {
             <div className='flex justify-center my-7'>
                 <img src={errorImg} alt="error page" />
             </div>
-            <button onClick={()=>navigate(-1)} className='btn bg-fuchsia-700 text-white'>Go Back</button>
+            <button onClick={()=>navigate(-1)} className='btn bg-linear-to-r from-[#6b36e5] to-[#995cf0] text-white'>Go Back !</button>
 
         </div>
     );

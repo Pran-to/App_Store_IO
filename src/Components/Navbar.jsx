@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router";
 import logo from '../assets/logo.png'
+import { FaGithub } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -31,20 +32,20 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow "
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow  font-semibold"
           >
             {links}
           </ul>
         </div>
-        <Link to={'/'} className="btn btn-ghost text-lg"> <img className="h-8 w-8" src={logo} alt="" /><span>HERO.IO</span></Link >
+        <Link to={'/'} className="btn btn-ghost text-lg"> <img className="h-8 w-8" src={logo} alt="" /><span className="text-purple-600 font-bold">HERO.IO</span></Link >
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 ">
+        <ul className="menu menu-horizontal px-1 font-semibold  ">
           {links}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn bg-linear-to-r from-[#6b36e5] to-[#995cf0] text-white"><FaGithub />Contribute</a>
       </div>
     </div>
   );
