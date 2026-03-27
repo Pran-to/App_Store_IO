@@ -7,14 +7,15 @@ import ErrorPage from "../Pages/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     Component: Root,
     children: [
       { index: true, Component: Home },
-      { path: "Apps", Component:Apps},
+      { path: "Apps", Component: Apps },
+      {
+        path: "*",
+        Component: ErrorPage,
+      },
     ],
   },
-  {
-    path :"*",
-    Component : ErrorPage
-  }
 ]);

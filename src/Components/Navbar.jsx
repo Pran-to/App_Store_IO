@@ -45,7 +45,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-linear-to-r from-[#6b36e5] to-[#995cf0] text-white"><FaGithub />Contribute</a>
+        <Link to={'https://github.com/Pran-to'} className="btn bg-linear-to-r from-[#6b36e5] to-[#995cf0] text-white"><FaGithub />Contribute</Link>
       </div>
     </div>
   );
