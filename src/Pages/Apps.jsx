@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useLoaderData } from "react-router";
 import AppCard from "../Components/AppCard";
+import AppNotFound from "../Components/AppNotFound";
 
 const Apps = () => {
   const appData = useLoaderData();
@@ -14,7 +15,9 @@ const Apps = () => {
   return (
     <div className="text-center p-10">
       <h1 className="text-3xl font-bold mt-10">Our All Applications</h1>
-      <p  className="text-xs my-5">Explore All Apps on the Market developed by us. We code for Millions</p>
+      <p className="text-xs my-5">
+        Explore All Apps on the Market developed by us. We code for Millions
+      </p>
 
       <div className="md:flex justify-between">
         <h1>({filteredApps.length}) Apps Found</h1>
@@ -28,13 +31,17 @@ const Apps = () => {
         />
       </div>
 
-      <div className="grid md:grid-cols-4 gap-5 my-5">
+      <div className="grid md:grid-cols-4 gap-5 my-5 ">
         {filteredApps.length > 0 ? (
           filteredApps.map((app, i) => (
-            <AppCard key={i} app={app} />
+            <Suspense fallback={<span className="loading loading-bars loading-xl"></span>} >
+              <AppCard key={i} app={app} />
+            </Suspense>
           ))
         ) : (
-          <p>No apps found</p>
+            <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
+                <AppNotFound></AppNotFound>
+            </Suspense>
         )}
       </div>
     </div>
