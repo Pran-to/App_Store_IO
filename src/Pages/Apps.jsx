@@ -34,7 +34,7 @@ const Apps = () => {
       <div className="grid md:grid-cols-4 gap-5 my-5 ">
         {filteredApps.length > 0 ? (
           filteredApps.map((app, i) => (
-            <Suspense fallback={<span className="loading loading-bars loading-xl"></span>} >
+            <Suspense key={i}  fallback={<span className="loading loading-bars loading-xl"></span>} >
               <AppCard key={i} app={app} />
             </Suspense>
           ))
