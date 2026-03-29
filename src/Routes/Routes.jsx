@@ -9,6 +9,7 @@ import Installation from "../Pages/Installation";
 export const router = createBrowserRouter([
   {
     path: "/",
+    loader: () => fetch("AppData.json"),
     Component: Root,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
@@ -18,13 +19,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Apps",
-        loader: () => fetch("AppData.json"),
         Component: Apps,
       },
       {
-        path: "/Apps/:id",
-        loader: ({params}) => fetch("AppData.json"),
+        path: "/AppDetails/:id",
         Component: Details,
+        loader: () => fetch("AppData.json"),
       },
       {
         path: "/Installation",

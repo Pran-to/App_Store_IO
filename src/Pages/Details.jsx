@@ -3,16 +3,16 @@ import { FaStar } from "react-icons/fa";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router";
 import Charts from "../Components/Charts";
-
-
-import React from 'react';
+import { addApp } from "../utility/LocalStorage";
 
 const Details = () => {
    const data = useLoaderData();
   const { id } = useParams();
-  console.log(id);
-
   const app = data.find((item) => item.id === parseInt(id));
+
+  const handleInstall = id =>{
+    addApp(id)
+  }
   return (
     <div>
       <div className="md:flex gap-10 px-20 py-10">
@@ -48,7 +48,7 @@ const Details = () => {
               </h1>
             </div>
           </div>
-           <button className="btn btn-active btn-success text-white">Install Now ({app.size} MB)</button>
+           <button onClick={ ()=>handleInstall(id)} className="btn btn-active btn-success text-white">Install Now ({app.size} MB)</button>
         </div>
       </div>
       <div className="divider px-20"></div>

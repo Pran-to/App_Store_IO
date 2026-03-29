@@ -1,10 +1,11 @@
-import React, { Suspense, useState } from "react";
-import { useLoaderData } from "react-router";
+import React, { Suspense, use, useState } from "react";
 import AppCard from "../Components/AppCard";
 import AppNotFound from "../Components/AppNotFound";
+import { AppContext } from "./Root";
 
 const Apps = () => {
-  const appData = useLoaderData();
+  const appData = use(AppContext);
+
   const [search, setSearch] = useState("");
 
   const filteredApps = appData.filter((app) => {
