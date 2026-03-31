@@ -10,7 +10,6 @@ const getApp = ()=>{
     else{
         return [];
     }
-    
 }
 
 const addApp = (id)=>{
@@ -29,7 +28,7 @@ const addApp = (id)=>{
 const removeApp = (id) => {
     const appData = getApp();
     const updatedData = appData.filter(item => parseInt(item) !== id);
-    
+
     localStorage.setItem('install', JSON.stringify(updatedData));
 }
 export {addApp,getApp,removeApp};
