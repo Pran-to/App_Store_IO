@@ -24,4 +24,15 @@ const addApp = (id)=>{
          localStorage.setItem('install',data)
     }
 }
-export {addApp};
+
+const removeApp = (id) => {
+    const appData = getApp();
+    console.log(id);
+    console.log(appData);
+
+    const updatedData = appData.filter(item => parseInt(item) !== id);
+    console.log(updatedData);
+
+    localStorage.setItem('install', JSON.stringify(updatedData));
+}
+export {addApp,getApp,removeApp};

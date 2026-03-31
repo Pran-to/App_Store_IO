@@ -32,7 +32,7 @@ const Apps = () => {
         />
       </div>
 
-      <div className="grid md:grid-cols-4 gap-5 my-5 ">
+      <div className="grid md:grid-cols-4 gap-5 my-5">
         {filteredApps.length > 0 ? (
           filteredApps.map((app, i) => (
             <Suspense key={i}  fallback={<span className="loading loading-bars loading-xl"></span>} >
@@ -41,7 +41,7 @@ const Apps = () => {
           ))
         ) : (
             <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
-                <AppNotFound></AppNotFound>
+                <AppNotFound ></AppNotFound>
             </Suspense>
         )}
       </div>
