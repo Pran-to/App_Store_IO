@@ -3,16 +3,27 @@ import { FaStar } from "react-icons/fa";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router";
 import Charts from "../Components/Charts";
-import { addApp } from "../utility/LocalStorage";
+import { addApp, getApp } from "../utility/LocalStorage";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Details = () => {
-   const data = useLoaderData();
+  const [disabled, setDisabled] = useState(false);
+  const data = useLoaderData();
   const { id } = useParams();
   const app = data.find((item) => item.id === parseInt(id));
 
-  const handleInstall = id =>{
-    addApp(id)
-  }
+  const handleInstall = (id) => {
+    addApp(id);
+    setDisabled(true);
+    toast.success("Install Success");
+  };
+  useEffect(() => {
+    const i = getApp();
+    if (i.includes(id)) {
+      setDisabled(true);
+    }
+  }, [id]);
   return (
     <div>
       <div className="md:flex gap-10 px-20 py-10">
@@ -48,7 +59,13 @@ const Details = () => {
               </h1>
             </div>
           </div>
-           <button onClick={ ()=>handleInstall(id)} className="btn btn-active btn-success text-white">Install Now ({app.size} MB)</button>
+          <button
+            onClick={() => handleInstall(id)}
+            disabled={disabled}
+            className="btn btn-active btn-success text-white"
+          >
+            {disabled ? "Installed" : `Install Now (${app.size} MB)`}
+          </button>
         </div>
       </div>
       <div className="divider px-20"></div>
@@ -58,13 +75,10 @@ const Details = () => {
       <div className="divider px-20"></div>
       <div className="px-20 mb-7">
         <h1 className="text-2xl font-bold mb-7">Descriptions</h1>
-        {
-          app.description
-        }
+        {app.description}
       </div>
     </div>
   );
 };
 
 export default Details;
-

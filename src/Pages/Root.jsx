@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import Navbar from '../Components/Navbar';
 import { Outlet, useLoaderData } from 'react-router';
 import Footer from '../Components/Footer';
+ import { ToastContainer} from 'react-toastify';
 
   export   const  AppContext = createContext()
 const Root = () => {
@@ -9,6 +10,7 @@ const Root = () => {
 
     return (
         <div>
+          <ToastContainer />
            <AppContext.Provider value={data}>
              <Navbar/>
             <Outlet/>

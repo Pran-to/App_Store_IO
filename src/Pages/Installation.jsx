@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import { AppContext } from "./Root";
 import { getApp, removeApp } from "../utility/LocalStorage";
 import InstallAppCard from "../Components/InstallAppCard";
+import { toast } from "react-toastify";
 
 const Installation = () => {
   const [InstallApp, setInstallApp] = useState([]);
@@ -17,6 +18,7 @@ const Installation = () => {
     removeApp(id);
     const remainingApps = InstallApp.filter((app) => app.id !== id);
     setInstallApp(remainingApps);
+    toast.success('UnInstall Done')
   };
   const handleSort = (s) => {
     if (s === "LtoH") {
